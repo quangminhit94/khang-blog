@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.admin import User
 from django.utils import timezone
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 
@@ -19,10 +20,6 @@ class Post(models.Model):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
 
-
-
-
-
-
-
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'slug': self.slug})
 
