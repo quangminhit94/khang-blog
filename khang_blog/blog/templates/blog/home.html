@@ -1,5 +1,8 @@
 {% extends "blog/base.html" %}
 {% block content %}
+    <form action="{% url 'search_results' %}" method="GET">
+        <input name="q" type="text" placeholder="Search..." class="form-control mb-3">
+    </form>
     {% for post in posts %}
     <article class="media content-section">
       <img class="rounded-circle article-img mt-4" src="{{ post.author.profile.image.url }}">
