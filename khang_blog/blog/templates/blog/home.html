@@ -12,7 +12,8 @@
           <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
+        <p class="article-content">{{ post.content|truncatewords_html:40 }}</p>
+        <a href="{% url 'post-detail' post.slug %}">Read More</a>
       </div>
     </article>
     {% endfor %}
